@@ -1,0 +1,25 @@
+.artigo {
+    margin-top: 25px;
+}
+
+.regulamento {
+    text-align: justify;
+    border-bottom: 1px dotted #62DA97;
+    padding-bottom: 10px;
+}
+.regulamento:last-child {
+    border-bottom: none;
+}
+
+.instrucoes h3 {
+    margin-top:    0;
+    margin-bottom: 20px;
+}
+
+.instrucoes .foto-container{
+    height: 260px;
+}
+
+.instrucoes.filhos .foto-container{
+    height: 240px;
+}

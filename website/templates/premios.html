@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+    <h2>
+        Conheça nossos Prêmios.
+    </h2>
+    <div class="linha busca">
+        <form action="{% url premios slug='' %}">
+            {% csrf_token %}
+            Pesquisar em
+            <select name="cat" id="campo-categoria">
+                <option value="">Tudo</option>
+                {% for categoria in categorias %}
+                <option value="{{ categoria.id }}" {% if categoria.id == cat %}selected="selected"{% endif %}>{{ categoria.nome }}</option>
+                {% endfor %}
+            </select>
+            por
+            <span class="embrulho-da-pesquisa">
+                <input type="text" id="campo-busca" name="q" value="{{ busca }}" />
+                <input type="submit" value="pesquisar" id="botao-pesquisar" />
+                <input type="reset" value="limpar" id="botao-limpar" />
+            </span>
+        </form>
+    </div>
+    {% if premio %}
+    {% include 'premio.html' %}
+    {% endif %}
+    <div class="linha">
+        {% if lista_premios %}
+        <h4>Escolha um prêmio abaixo para ver suas informações</h4>
+        <div class="lista-premios">
+            <ul>
+            {% for premio_na_lista in lista_premios %}
+                <li><a href="{% url premios slug=premio_na_lista.slug %}{{ queryString }}">{{ premio_na_lista.nome }}</a></li>
+            {% endfor %}
+            </ul>
+        </div>
+        {% else %}
+            <h5>Nenhum prêmio foi encontrado com esses critérios de pesquisa.</h5>
+        {% endif %}
+    </div>
+    <div class="linha" style="text-align: center;">
+        {% include 'adsense-horizontal.html' %}
+    </div>
+{% endblock conteudo %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/menu-lista.css" type="text/css" media="screen" />
+{% endblock css %}
+
+{%  block js_bottom %}
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui-1.8.18.custom.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/menu-lista.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/premios.js"></script>
+    <script type="text/javascript">
+        var premios = [
+            {% for premio_na_lista in lista_premios %}
+                {
+                    nome: "{{ premio_na_lista.nome }}",
+                    slug: "{% url premios slug=premio_na_lista.slug %}{{ queryString }}",
+                    thumbnail: "{{ MEDIA_URL }}img/premios/{{ premio_na_lista.thumbnail }}",
+                    last: "",
+                    selecionado: "{% if premio.nome == premio_na_lista.nome %} selecionado{% endif %}"
+                },
+            {% endfor %}
+        ];
+    </script>
+{%  endblock js_bottom %}

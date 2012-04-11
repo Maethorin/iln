@@ -1,0 +1,39 @@
+<div class="linha">
+    <h2 class="nome-premio">{{ premio.nome }}</h2>
+    {% if premio.quantidade_de_fotos == 0 %}
+        <div class="foto-container sem-foto">Sem foto disponível</div>
+    {% else %}
+        {% if premio.quantidade_de_fotos == 1 %}
+            <div class="foto-container"><img src="{{ MEDIA_URL }}img/premios/{{ premio.obter_fotos }}" alt="Foto de {{ premio.nome }}" /></div>
+        {% else %}
+            {% for foto in premio.obter_fotos %}
+                <div class="{{ premio.obter_classe_da_coluna }}{% if forloop.last %} last{% endif %}">
+                    <div class="foto-container">
+                        <img src="{{ MEDIA_URL }}img/premios/{{ foto }}" alt="Foto de {{ premio.nome }}" />
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+</div>
+<div class="linha dados-do-premio">
+    <h3>Dados do prêmio</h3>
+    <div class="sevencol">
+        <div class="detalhe">
+            <p>
+                <span class="titulo">Descrição: </span>{{ premio.descricao }}
+            </p>
+            <p>
+                <span class="titulo">Categoria: </span>{{ premio.categoria.nome }}
+            </p>
+        </div>
+    </div>
+    <div class="fivecol last">
+        <div class="detalhe">
+            <div class="preco">Valor: <span>ILN$ {{ premio.valor }},00</span></div>
+            <p>
+                <span class="titulo">Prazo de entrega: </span>{{ premio.prazo_de_entrega }} dia(s)
+            </p>
+        </div>
+    </div>
+</div>

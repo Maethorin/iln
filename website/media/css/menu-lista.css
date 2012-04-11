@@ -1,0 +1,71 @@
+.item-da-lista {
+    padding: 5px;
+    border: 1px solid #EFEFEF;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    background-color: #FAFAFA;
+    font-size: 10px;
+    color: #555;
+    text-align: center;
+    cursor: pointer;
+    min-height: 125px;
+    -moz-box-shadow: 0 1px 1px 1px rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 1px 1px 1px rgba(0, 0, 0, .5);
+}
+
+.item-da-lista.selecionado {
+    border-color: #004400;
+    background-color: #d4ffe3;
+}
+
+.item-da-lista.selecionado:hover {
+    border: 1px solid #004400;
+    background-color: #d4ffe3;
+    padding: 5px
+}
+
+.item-da-lista a {
+    text-decoration: none;
+}
+
+.item-da-lista:hover {
+    border: 2px solid #0f5b31;
+    background-color: #eef7ef;
+    padding: 4px;
+}
+
+.seta-esquerda, .seta-direita {
+    background-color: #ffbbd5;
+    padding: 1px 12px 2px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    color: #ae0345;
+    -moz-box-shadow: 1px 5px 12px 4px rgba(185, 52, 103, .2) inset;
+    -webkit-box-shadow: 1px 5px 12px 4px rgba(185, 52, 103, .2) inset;
+    cursor: pointer;
+}
+
+.seta-esquerda:hover, .seta-direita:hover {
+    -moz-box-shadow: 1px 5px 12px 4px rgba(213, 149, 173, .6) inset;
+    -webkit-box-shadow: 1px 5px 12px 4px rgba(213, 149, 173, .6) inset;
+    background-color: #c34a79;
+    color: #FFF;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.seta-esquerda:active, .seta-direita:active {
+    padding: 2px 12px 1px;
+}
+
+.seta-direita {
+    float: right;
+}
+
+.seta-esquerda {
+    float: left;
+}

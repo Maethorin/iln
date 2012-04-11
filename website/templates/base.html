@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block titulo %}ILN - Suas ações valem prêmios{% endblock titulo %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Cada ação vale ILN, que você junta e pode trocar por muitos prêmios. Não fique parado e venha participar." />
+        <meta name="keywords" content="Ação, tarefa, recompensa, prêmio, bônus" />
+       	<!--[if lte IE 9]><link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" /><![endif]-->
+       	<link rel="stylesheet" href="{{ MEDIA_URL }}css/1140.css" type="text/css" media="screen" />
+       	<link rel="stylesheet" href="{{ MEDIA_URL }}css/base.css" type="text/css" media="screen" />
+        {% if nome %}
+        <link rel="stylesheet" href="{{ MEDIA_URL }}css/{{ nome }}.css" type="text/css" media="screen" />
+        {% else %}
+        <link rel="stylesheet" href="{{ MEDIA_URL }}css/login.css" type="text/css" media="screen" />
+        {% endif %}
+       	<script type="text/javascript" src="{{ MEDIA_URL }}js/css3-mediaqueries.js"></script>
+
+        {% block css %}
+        {% endblock css %}
+    </head>
+    <body>
+        <div class="container topo">
+            {% block cabecalho %}
+                <div class="row">
+                    <div>
+                        <a href="{% url home %}" class="link-home">
+                            <div class="titulo-pagina">
+                                <h1>$ILN.com</h1>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% endblock cabecalho %}
+        </div>
+        {% block usuario %}
+        <div class="row usuario">
+            {% if usuario.is_authenticated %}
+                Bem vindo {{ usuario.first_name }}.
+                <span class="url"><a href="{% url logout %}?next=/{{ nome }}/">logout</a></span>
+            {% else %}
+                Bem vindo Visitante.
+                <span class="url"><a href="{% url login %}?next=/{{ nome }}/">login</a></span>
+            {% endif %}
+        </div>
+        {% endblock usuario %}
+        <div class="container">
+            {% block menu %}
+                <div class="row fundo-linha">
+                    <ul class="abas">
+                        <li class="tarefas {% if nome == "tarefas" %}ativa{% endif %}"><a href="{% url tarefas %}">Tarefas</a></li>
+                        <li class="premios {% if nome == "premios" %}ativa{% endif %}"><a href="{% url premios slug='' %}">Prêmios</a></li>
+                        <li class="saldo {% if nome == "saldo" %}ativa{% endif %}"><a href="{% url saldo %}">Saldo</a></li>
+                        <li class="pedidos {% if nome == "pedidos" %}ativa{% endif %}"><a href="{% url pedidos %}">Pedidos</a></li>
+                    </ul>
+                </div>
+            {% endblock menu %}
+            <div class="row fundo-linha">
+                <div class="corpo {{ classe_corpo }}">
+                    <div class="twocol">
+                        {% include "adsense-vertical.html" %}
+                    </div>
+                    <div class="eightcol">
+                        <div class="conteudo {{ nome }}">
+                        {% block conteudo %}
+                        {% endblock conteudo %}
+                        </div>
+                    </div>
+                    <div class="twocol last">
+                        {% include "adsense-vertical.html" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container rodape">
+            <div class="row">
+                <div class="onecol"></div>
+                <div class="tencol">
+                    <div class="menu-rodape">
+                        {% if nome != "home" %}<a class="link-rodape" href="{% url home %}">Home</a>{% endif %}
+                        {% if nome != "tarefas" %}{% if nome != "home" %} | {% endif %}<a class="link-rodape" href="{% url tarefas %}">Tarefas</a>{% endif %}
+                        {% if nome != "premios" %} | <a class="link-rodape" href="{% url premios slug=None %}">Prêmios</a>{% endif %}
+                        {% if nome != "saldo" %} | <a class="link-rodape" href="{% url saldo %}">Saldo</a>{% endif %}
+                        {% if nome != "pedidos" %} | <a class="link-rodape" href="{% url pedidos %}">Pedidos</a>{% endif %}
+                        {% if nome != "regulamento" %} | <a class="link-rodape" href="{% url regulamento %}">Regulamento</a>{% endif %}
+                    </div>
+                    <div class="conteudo-rodape">
+                        ILN.com &copy; Todos os direitos reservados -
+                        <a href="mailto:maethorin@gmail.com" class="mailto">Fale conosco por e-mail</a><br />
+                    </div>
+                </div>
+                <div class="onecol"></div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ MEDIA_URL }}js/abas.js"></script>
+
+        {% block js_bottom %}
+        {% endblock js_bottom %}
+    </body>
+</html>

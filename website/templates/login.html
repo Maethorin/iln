@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block usuario %}
+{% endblock usuario %}
+
+{% block conteudo %}
+
+{% if form.errors %}
+    <div class="erro-login">Usuário e/ou senha não conferem. Por favor tente de novo.</div>
+{% else %}
+    <div class="mensagem-login">
+        <p>Você precisa estar autenticado para acessar essa área do site. Faça seu login abaixo.</p>
+        <p>Se você ainda não tem um login, peça ao seu responsável para criar um.</p>
+        <p>Após o login com sucesso, você será redirecionado para a página que queria ir.</p>
+    </div>
+{% endif %}
+    <div class="form-container">
+        <form id="login" method="post" action="{% url login %}">
+        {% csrf_token %}
+            <div class="titulo-form">
+                Dados para a autenticação:
+            </div>
+            <ul>
+                <li>
+                    <span class="label">{{ form.username.label_tag }}</span>
+                    {{ form.username }}
+                </li>
+                <li>
+                    <span class="label">{{ form.password.label_tag }}</span>
+                    {{ form.password }}
+                </li>
+            </ul>
+            <input id="botao-login" type="submit" value="login" />
+            <input id="botao-limpar" type="reset" value="limpar" />
+            <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+    </div>
+{% endblock conteudo %}

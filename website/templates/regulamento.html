@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+    <h2>
+        Regras para uso do sistema
+    </h2>
+    <div class="linha">
+        <h3>Regulamento:</h3>
+        <div class="onecol"></div>
+        <div class="tencol">
+            <h4 class="artigo">Art 1º:</h4>
+            <p class="regulamento">
+                Cada tarefa concluída pelo usuário valem ILNs. O valor de cada tarefa está especificado na
+                <a href="{% url tarefas %}">página de Tarefas</a>.
+            </p>
+
+            <h4 class="artigo">Art 2º:</h4>
+            <p class="regulamento">
+                Para acumular ILNs, o usuário precisa estar sempre ganhando. Caso você fique mais de uma semana sem
+                ganhar um ILN, seu saldo voltará a ser 0 (zero). Não fique parado!
+            </p>
+
+            <h4 class="artigo">Art 3º:</h4>
+            <p class="regulamento">
+                Os ILNs acumulados nunca expiram. Você poderá trocá-los a qualquer momento e, caso não
+                incorram no artigo 2º, irão durar para sempre.
+            </p>
+
+            <h4 class="artigo">Art 4º:</h4>
+            <p class="regulamento">
+                As tarefas que valen ILNs serão oferecidas a você, mas você pode se voluntariar para as
+                tarefas listadas na tabela. Nesse caso, um bônus poderá ser oferecido. O valor desse
+                bônus encontra-se, também, na <a href="{% url tarefas %}">página de Tarefas</a>.
+            </p>
+
+            <h4 class="artigo">Art 5º:</h4>
+            <p class="regulamento">
+                Algumas tarefas tem tempo determinado. Terminar uma tarefa antes do tempo lhe dará direito
+                a um bônus de ILN. Terminar a tarefa após o prazo não irá lhe render ILNs, ou terá algum
+                desconto, conforme a tabela.
+            </p>
+
+            <h4 class="artigo">Art 6º:</h4>
+            <p class="regulamento">
+                O usuário poderá, em casos excepcionais, ser penalizado e perder ILNs. Essa penalização
+                será avaliada pelos responsáveis do sistema de prêmios e dependem de muitos fatores como:
+                competição desleal, falta nas tarefas importantes, desrespeito a outros usuários, danos
+                causados pelo usuário a bens comuns e etc
+            </p>
+        </div>
+        <div class="onecol last"></div>
+    </div>
+    <div class="linha" style="text-align: center;">
+        {% include 'adsense-horizontal.html' %}
+    </div>
+{% endblock conteudo %}

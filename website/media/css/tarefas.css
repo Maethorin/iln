@@ -1,0 +1,134 @@
+.grupo-de-tarefas {
+    overflow: hidden;
+}
+
+.grupo {
+    float: left;
+    width: 343px;
+    margin:  10px;
+    border: 1px dashed #DDD;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+
+.vazio {
+    opacity: 0.3;
+}
+
+.grupo.ativo {
+    -moz-border-radius: 8px;
+    -moz-box-shadow: 3px 3px 11px 2px #555;
+
+    -webkit-border-radius: 8px;
+    -webkit-box-shadow: 3px 3px 11px 2px #555;
+
+    border: 1px solid #EEE;
+}
+
+.nome-grupo {
+    background-color: #EFEFEF;
+    margin-top: 0;
+    padding: 10px;
+    cursor: pointer;
+
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+
+.nome-grupo:hover {
+    background-color: #AAA;
+}
+
+.ativo {
+    background-color: #777777;
+    padding:            0 0 16px 0;
+}
+
+.ativo .nome-grupo {
+    background-color: #777;
+    color: #FFF;
+    -moz-border-radius: 8px 8px 0 0;
+    -webkit-border-radius: 8px 8px 0 0;
+}
+
+.fechar-grupo {
+    display: none;
+    float:              right;
+    background:         #666;
+    color:              #EEE;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    padding:            0 6px 1px;
+    border: 1px solid #EEE;
+}
+
+.fechar-grupo:hover {
+    background:         #EEE;
+    color:              #666;
+}
+
+.container-de-tarefas {
+    height: 360px;
+    overflow: auto;
+    background-color: #FFF;
+    display: none;
+}
+
+ul.tarefas {
+    background-color: #FFF;
+    float: left;
+    display: none;
+}
+
+li.tarefa {
+    width:  335px;
+    border:             1px dashed #DDD;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    margin: 20px 0px 20px 20px;
+    background:         #EEE;
+}
+
+li.tarefa:hover {
+    background-color:         #D8D8D8;
+}
+
+.nome-tarefa {
+    margin-top:       0;
+    padding: 10px;
+    color:              #666;
+    cursor: pointer;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+}
+
+.tarefa.ativo .nome-tarefa {
+    -moz-border-radius: 7px 7px 0 0;
+    -webkit-border-radius: 7px 7px 0 0;
+}
+
+.controle-do-colapsar {
+    float: right;
+}
+
+.dados-da-tarefa {
+    display: none;
+    background-color: #FFF;
+    padding:          10px 0;
+}
+
+.dado-da-tarefa {
+    padding: 0 3px 0 15px;
+    margin: 5px 0 20px;
+}
+
+.tempo, .moeda {
+    font-weight: bold;
+    font-family: "Averia Serif Libre", verdana, serif;
+    color: #A65900;
+    font-size: 14px;
+}
+
+.moeda {
+    color: #0a470f;
+}

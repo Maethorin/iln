@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load numeros %}
+{% block conteudo %}
+    <h2>
+        Lista de tarefas
+    </h2>
+    <div class="linha">
+        <p class="justificado">
+            Abaixo segue a tabela com as tarefas disponíveis. Se você tem uma tarefa atribuída a você, não perca
+            tempo. Seus pontos estão lhe esperando.
+        </p>
+
+        <p class="justificado">
+            Se você não tem tarefas para você, seja um voluntário e ganhe bônus!
+        </p>
+    </div>
+    <h2>Selecione um grupo para ver as tarefas</h2>
+    <div class="linha">
+        <ul class="grupos-de-tarefas">
+            {% for grupo in grupo_de_tarefas %}
+                <li class="grupo">
+                    <h3 class="nome-grupo">
+                        {{ grupo.nome }}
+                    </h3>
+                    <ul class="tarefas">
+                        {% for tarefa in grupo.tarefas %}
+                            <li class="tarefa">
+                                <h4 class="nome-tarefa">
+                                    {{ tarefa.nome }}
+                                </h4>
+                                <div class="dados-da-tarefa">
+                                    <div class="dado-da-tarefa">
+                                        <span class="label">Valor: </span>
+                                        {{ tarefa.valor|moeda }}
+                                    </div>
+                                    {% if tarefa.tempo_para_execucao %}
+                                    <div class="dado-da-tarefa">
+                                        <span class="label">Tempo: </span>
+                                        {{ tarefa.tempo_para_execucao|tempo }}
+                                    </div>
+                                    {% endif %}
+                                    {% if tarefa.bonus_voluntario %}
+                                    <div class="dado-da-tarefa">
+                                        Seja voluntário para essa tarefa e<br />
+                                        ganhe {{ tarefa.bonus_voluntario|moeda }} de Bônus!
+                                    </div>
+                                    {% endif %}
+                                    {% if tarefa.bonus_de_tempo %}
+                                    <div class="dado-da-tarefa">
+                                        Ganhe bônus de {{ tarefa.bonus_de_tempo|moeda }}<br />
+                                        se terminar em {{ tarefa.tempo_para_bonus|tempo }}
+                                    </div>
+                                    {% endif %}
+                                    {% if tarefa.desconto_por_tempo %}
+                                    <div class="dado-da-tarefa">
+                                        ATENÇÃO! <br />
+                                        Se você não terminar essa tarefa em {{ tarefa.tempo_para_desconto|tempo }}<br />
+                                        os pontos da tarefa terão um desconto de {{ tarefa.desconto_por_tempo|moeda }}
+                                    </div>
+                                    {% endif %}
+                                    {% if tarefa.tempo_limite %}
+                                    <div class="dado-da-tarefa">
+                                        Se você não terminar essa tarefa em {{ tarefa.tempo_limite|tempo }}<br />
+                                        você não terá direito ao valor.
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock conteudo %}
+
+{%  block js_bottom %}
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui-1.8.18.custom.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/tarefas.js"></script>
+{%  endblock js_bottom %}
