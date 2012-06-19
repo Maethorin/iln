@@ -1,6 +1,28 @@
 {% extends 'base.html' %}
+{% load numeros %}
 {% block conteudo %}
     <h2>
-        Consulte seu saldo
+        Movimentação da conta
     </h2>
+
+    <table class="movimentacao">
+        <tr>
+            <td></td>
+            <td>data</td>
+            <td>descrição</td>
+            <td>valor</td>
+            <td>saldo</td>
+        </tr>
+    {% for movimentacao in movimentacoes %}
+        <tr>
+            <td class="tipo-movimentacao">{{ movimentacao.tipo }}</td>
+            <td class="data-movimentacao">{{ movimentacao.data|date:"SHORT_DATETIME_FORMAT" }}</td>
+            <td class="descricao-movimentacao">{{ movimentacao.descricao }}</td>
+            <td class="valor-movimentacao {% if movimentacao.tipo == 'R' %}negativo{% endif %}">{% if movimentacao.tipo == 'R' %}-{% endif %}{{ movimentacao.valor|moeda_simples }}</td>
+            <td class="saldo-movimentacao">{{ movimentacao.saldo|moeda_simples }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
+    Saldo final: {{ conta.saldo|moeda }}
 {% endblock conteudo %}

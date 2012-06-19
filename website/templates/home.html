@@ -3,6 +3,7 @@
     <h2>
         Suas tarefas valem prêmios.
     </h2>
+    {% if not usuario.conta %}
     <div class="linha instrucoes">
         <div class="fourcol">
             <div class="foto-container"></div>
@@ -64,6 +65,7 @@
         </p>
 
     </div>
+    {% endif %}
 
     <div class="linha instrucoes filhos">
         <div class="fourcol">

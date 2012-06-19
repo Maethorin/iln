@@ -16,3 +16,11 @@ def tempo(valor):
 @register.filter(name='moeda')
 def moeda(valor):
     return mark_safe('<span class="moeda">$ILN %s,00</span>' % valor)
+
+@register.filter(name='moeda_simples')
+def moeda_simples(valor):
+    return mark_safe('<span class="moeda">%s,00</span>' % valor)
+
+@register.filter(name='mod4')
+def mod4(valor):
+    return valor%4

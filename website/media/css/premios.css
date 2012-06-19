@@ -12,7 +12,7 @@
     padding:            4px 8px;
     line-height:        25px;
     border:             1px dashed #AE0345;
-    background-color: #ffbbd5;
+    background-color: #ffe4f5;
 }
 
 .dados-do-premio span {
@@ -92,4 +92,62 @@ h4 {
 #botao-limpar {
     background-position: right center;
     margin-left: 0;
+}
+
+.titulo.cor {
+    float: left;
+}
+
+.cores-container {
+    margin-left: 10px;
+    display:     inline-block;
+    position: relative;
+}
+
+td.cor {
+    padding: 0 3px;
+    height: 26px;
+}
+
+.premio-nome {
+    display: none;
+    line-height: 10px;
+    width: auto;
+    height: auto;
+    padding: 5px 15px;
+}
+
+.premio-nome.ativo {
+    display: inline;
+    position: absolute;
+    margin-top: -35px;
+    background-color: #666;
+    color: #FFF;
+    border: 1px solid #DDD;
+    -webkit-border-radius: 3px 3px;
+}
+
+.premio-cor {
+    display: inline-block;
+    width: 30px;
+    height:          18px;
+    border: 1px solid #777;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-box-shadow: 1px 1px 8px 3px rgba(255, 255, 255, 0.2) inset;
+    -webkit-box-shadow: 1px 1px 8px 3px rgba(255, 255, 255, 0.2) inset;
+    text-indent: -9000px;
+    cursor: pointer;
+    line-height: 16px;
+}
+
+.premio-cor.ativo {
+    width:   80px;
+    padding: 15px 0;
+    text-align:  center;
+    color: #000;
+    z-index: 10;
+    position: absolute;
+    height: auto;
+    margin: -9px 0 0 0;
 }

@@ -1,3 +1,5 @@
+{% load numeros %}
+
 <div class="linha">
     <h2 class="nome-premio">{{ premio.nome }}</h2>
     {% if premio.quantidade_de_fotos == 0 %}
@@ -26,6 +28,33 @@
             <p>
                 <span class="titulo">Categoria: </span>{{ premio.categoria.nome }}
             </p>
+            {% if premio.tem_sabores %}
+            <p>
+                <span class="titulo">Sabores: </span>
+                {% for sabor in premio.sabores.values %}
+                    {{ sabor.nome }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+            {% endif %}
+            {% if premio.tem_cores %}
+            <span class="titulo cor">Cores: </span>
+            <table class="cores-container">
+                <tr>
+            {% for cor in premio.cores.values %}
+
+                <td class="cor">
+                    <span class="premio-nome">{{ cor.nome }}</span>
+                    <span class="premio-cor" style="background-color: #{{ cor.hexa }}">#{{ cor.hexa }}</span>
+                </td>
+                {% if forloop.counter|mod4 == 0 %}
+                    </tr>
+                    <tr>
+                {% endif %}
+            {% endfor %}
+                </tr>
+            </table>
+                <div class="container-premio-nome"></div>
+            {% endif %}
         </div>
     </div>
     <div class="fivecol last">

@@ -1,0 +1,7 @@
+.valor-movimentacao, .saldo-movimentacao {
+    text-align: right;
+}
+
+.negativo {
+    color: red;
+}
